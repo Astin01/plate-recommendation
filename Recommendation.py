@@ -81,7 +81,7 @@ def recommend(category):
 
    # 원하는 JSON 형식으로 변환
     result = [
-        {"name": restaurant[0], "score": score[1]}
+        {"name": restaurant, "score": score}
         for restaurant, score in recommended_restaurants
     ]
 
