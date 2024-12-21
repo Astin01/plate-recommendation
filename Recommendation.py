@@ -6,12 +6,12 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Excel 파일 경로
-EXCEL_FILE_PATH = 'restaurant_scores.xlsx'
+EXCEL_FILE_PATH = 'restaurant_scores.csv'
 
 
 def load_restaurant_data(file_path, category=None):
     # Excel 파일을 데이터프레임으로 읽기
-    df = pd.read_excel(file_path)
+    df = pd.read_csv(file_path)
 
     print(df.columns)
     # 특정 카테고리만 필터링
@@ -38,7 +38,7 @@ def load_restaurant_data(file_path, category=None):
 # 추천 엔드포인트
 
 
-@app.route('/recommend/<string:category>', methods=['POST'])
+@app.route('/api/recommend/<string:category>', methods=['POST'])
 def recommend(category):
     # 사용자 선호도 데이터를 JSON 형식으로 받기
     user_preferences_data = request.json
